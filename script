@@ -1,0 +1,64 @@
+function certificates() {
+  var spreadSheet = SpreadsheetApp.openById('SPREADSHEET_ID');
+  var page = spreadSheet.getSheetByName('PAGE/SHEET_NAME');
+  var data = page.getDataRange().getValues();
+  var folder = DriveApp.getFolderById('GOOGLE_DRIVE_FOLDER_ID');
+  var googleSlide = 'GOOGLE_SLIDE_ID';
+
+
+  //in this loop, im going from the 1st row till the 30th, you can change this according to your usecase.
+  
+ /* for (var i = 1; i < 30; i++) {
+    //data[row][columnn], 5 for column F 
+    var rank = data[i][5];
+    //this loop is used because we have 3 winners in each row (three first place winners, three second place winners, etc, you can remove/change this loop accordingly)
+    for(var j = 0; j<3; j++){
+    
+    //grabs the names of the winners
+    var name = data[i][j];
+
+    //makes a copy of the google slide and stores it in the google drive folder I made.
+    var copy = DriveApp.getFileById(googleSlide).makeCopy(folder);
+
+    //opens the new copy we made
+    var slide = SlidesApp.openById(copy.getId()).getSlides()[0];
+
+    //gets the textboxes from the google slide
+    var textBox = slide.getShapes();
+
+    //you can change this into a loop to go through every textbox and replace the placeholder text with your text accordingly, but since i only needed two textboxes for my usecase I manually called them.
+    textBox[0].getText().replaceAllText('name',name)
+    textBox[1].getText().replaceAllText('rank',rank);
+
+    //changes the googleslide copy's name into the winner's name.
+    copy.setName(name);
+   
+  
+  }
+  
+
+  }
+  */
+  //after we're completely done with the first program -> generated all the google slide copies, we run this code to save them as pdf
+
+  //stores all the google slide copies we made earlier
+     var files = folder.getFiles();
+     //this loop interates through all the slide files.
+      while(files.hasNext()){
+      
+        var temp = files.next().getId();
+        var recipientName = DriveApp.getFileById(temp).getName();
+
+        //stores pdf file 
+         let pdf =  DriveApp.getFileById(temp)
+              .getBlob()
+              .getAs("application/pdf");
+pdf.setName(recipientName+" Certificate.pdf");
+
+//stores the pdf file we made earlier in our google drive folder
+let file = DriveApp.getFolderById('GOOGLE_DRIVE_FOLDER_ID').createFile(pdf);
+      }
+
+    
+  
+}
