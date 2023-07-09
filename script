@@ -8,7 +8,7 @@ function certificates() {
 
   //in this loop, im going from the 1st row till the 30th, you can change this according to your usecase.
   
- /* for (var i = 1; i < 30; i++) {
+ for (var i = 1; i < 30; i++) {
     //data[row][columnn], 5 for column F 
     var rank = data[i][5];
     //this loop is used because we have 3 winners in each row (three first place winners, three second place winners, etc, you can remove/change this loop accordingly)
@@ -26,8 +26,8 @@ function certificates() {
     //gets the textboxes from the google slide
     var textBox = slide.getShapes();
 
-    //you can change this into a loop to go through every textbox and replace the placeholder text with your text accordingly, but since i only needed two textboxes for my usecase I manually called them.
-    textBox[0].getText().replaceAllText('name',name)
+    //you can change this into a loop to go through every textbox and replace the placeholder text with your text accordingly, but since I only needed two textboxes for my use case I manually called them.
+    textBox[0].getText().replaceAllText('name', name)
     textBox[1].getText().replaceAllText('rank',rank);
 
     //changes the googleslide copy's name into the winner's name.
@@ -38,10 +38,11 @@ function certificates() {
   
 
   }
-  */
+ 
   //after we're completely done with the first program -> generated all the google slide copies, we run this code to save them as pdf
 
   //stores all the google slide copies we made earlier
+/*
      var files = folder.getFiles();
      //this loop interates through all the slide files.
       while(files.hasNext()){
@@ -59,6 +60,6 @@ pdf.setName(recipientName+" Certificate.pdf");
 let file = DriveApp.getFolderById('GOOGLE_DRIVE_FOLDER_ID').createFile(pdf);
       }
 
-    
+    */
   
 }
