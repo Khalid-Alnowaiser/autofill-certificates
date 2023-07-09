@@ -16,6 +16,5 @@ Section 2: It generates PDF copies of the Google Slide files.
 
 Remember, if you're dealing with large amounts of data, you can break it down into multiple runs by adjusting the loop values. For example, start with "for(int i = 0; i<20; i++)" and then rerun with "for(int i = 20; i<40; i++)" and so on.
 
-Keep in mind that the first section can be slow, so it's best to run the two sections as separate processes. Get ready to simplify your certificate creation process like never before!
-
+Keep in mind that the first section can be slow, so it's best to run the two sections as separate processes.
 Note: Feel free to customize the script to suit your specific needs and preferences.
